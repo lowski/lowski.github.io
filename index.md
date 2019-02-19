@@ -6,7 +6,11 @@ description: ""
 permalink: /
 ---
 
-My knowledge base of all the things I learned across a variety of languages and technologies.
+<img src="/images/avatar.jpg" alt="Lucas Mendelowski" class="avatar" />My name is Lucas Mendelowski and I'm software engineer focused on building web applications from Krakow, Poland.
+
+I mostly work with Ruby (on and off the Rails) and modern JavaScript frameworks (Ember.js / React).
+
+This website is my knowledge base of all the things I learned across a variety of languages and technologies.
 
 Inspired by:
 

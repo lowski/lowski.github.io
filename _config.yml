@@ -7,6 +7,5 @@ permalink: pretty
 remote_theme: pmarsceill/just-the-docs
 search_enabled: true
 aux_links:
-  About: /about
   GitHub: https://github.com/lowski
   Twitter: https://twitter.com/lowski_
