@@ -1,12 +1,7 @@
----
----
-
-@import "{{ site.theme }}";
-
 .avatar {
   float: right;
-  margin-left: 10px;
   width: 100px;
   height: 100px;
+  margin-left: 10px;
   border-radius: 3px;
 }
