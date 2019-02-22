@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Run gofmt on all project files
+date: 2019-01-07
 parent: Go
 ---
 

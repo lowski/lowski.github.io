@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Attaching custom behavior to changeset
+date: 2019-02-22
 parent: Ember.js
 ---
 

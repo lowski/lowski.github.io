@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: homepage
 nav_order: 1
 title: 🏠 Home
 description: ""
@@ -11,8 +11,3 @@ permalink: /
 I mostly work with Ruby (on and off the Rails) and modern JavaScript frameworks (Ember.js / React).
 
 This website is my knowledge base of all the things I learned across a variety of languages and technologies.
-
-Inspired by:
-
-- [thoughtbot/til](https://github.com/thoughtbot/til)
-- [jbranchaud/til](https://github.com/jbranchaud/til)

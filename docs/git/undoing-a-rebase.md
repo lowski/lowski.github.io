@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Undoing a rebase
+date: 2019-02-15
 parent: Git
 ---
 

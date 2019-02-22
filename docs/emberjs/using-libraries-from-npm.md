@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Using libraries from NPM
+date: 2017-12-10
 parent: Ember.js
 ---
 
