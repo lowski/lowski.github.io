@@ -7,47 +7,52 @@ parent: Ember.js
 
 # Attaching custom behavior to changeset
 
-Recently I've encountered a very interesting case. I wanted to re-use computed properties from the model on the [changeset](https://github.com/poteto/ember-changeset) so when new values are assigned, derived values are immediateluy recalculated (for the preview purpose). Those properties need to be defined on the changeset because they are not propagated to the model until you call `changeset.execute()`.
+Recently I've encountered a very interesting case: I wanted to re-use computed properties from the model on the [changeset](https://github.com/poteto/ember-changeset) so when user assigned new values, derived values were immediately updated. Computed properties had to be also attached changeset (even though they were already on the model) because changes are not propagated to the model until they are valid during `changeset.execute()`call (which is used under the hood by `changeset.save()`).
 
-To better explain my use case, I'm providing code snippets below.
+Here is short code sample presenting how it was supposed to work:
 
-1. Computed property to calculate `subtotals` based on the `items`:
+```javascript
+changeset.set('items:fistObject').set('taxRate', newValue);
+changeset.get('subTotals')
+```
 
-    ```javascript
-    subTotals: computed('items.[]', 'items.@each.taxRate', function() {
-      const taxRates = this.get('items').mapBy('taxRate').uniq();
-      return taxRates.map((taxRate) => {
-        const items = this.get('items').filterBy('taxRateCode', taxRate.code);
-        return Subtotal.create({ items, taxRate });
-      });
-    })
-    ```
+`subtotals` was a computed property based on the `items` attribute. It simply grouped them based on `taxRate` field and passed to a new `Subtotal` instance:
 
-2. Attaching mixin to the changeset instance:
+```javascript
+subTotals: computed('items.[]', 'items.@each.taxRate', function() {
+  const taxRates = this.get('items').mapBy('taxRate').uniq();
+  return taxRates.map((taxRate) => {
+    const items = this.get('items').filterBy('taxRate', taxRate);
+    return Subtotal.create({ items, taxRate });
+  });
+});
+```
 
-    ```javascript
-    import Component from '@ember/component';
-    import lookupValidator from 'ember-changeset-validations';
-    import { action } from '@ember-decorators/object';
-    import { changeset } from 'ember-changeset';
+Here is how I attached my mixin to the changeset instance:
 
-    ...
+```javascript
+import Component from '@ember/component';
+import lookupValidator from 'ember-changeset-validations';
+import { action } from '@ember-decorators/object';
+import { changeset } from 'ember-changeset';
 
-    export default class InvoiceFormComponent extends Component {
-      @computed('invoice')
-      get changeset() {
-        let Changeset = changeset(this.invoice,
-                                  lookupValidator(InvoiceValidation),
-                                  InvoiceValidation);
-        Changeset.reopen(InvoiceDecorator);
-        return Changeset.create();
-      }
-    }
-    ```
+...
 
-I use `changeset` factory which dynamically generates changeset class. Then I reopen it to include my mixin. Once my `Changeset` class is defined, I simply initialize a new instance.
+export default class InvoiceFormComponent extends Component {
+  @computed('invoice')
+  get changeset() {
+    let Changeset = changeset(this.invoice,
+                              lookupValidator(InvoiceValidation),
+                              InvoiceValidation);
+    Changeset.reopen(InvoiceDecorator);
+    return Changeset.create();
+  }
+}
+```
 
-Unfortunately I've encountered another problem - `model#items` was also a computed property (generated from raw `itemsAttributes`):
+I used `changeset` factory function which generate a `Changeset` class. Then I reopened it to include my mixin. Once my `Changeset` class was fully defined, I simply initialized a new instance.
+
+Unfortunately I encountered another problem - `model.items` was actually a computed property (derived from `itemsAttributes` field):
 
 ```javascript
 import Mixin from '@ember/object/mixin';
@@ -68,7 +73,7 @@ export default Mixin.create({
 });
 ```
 
-I had to figure out how to correctly propagate changes on `items` in the changeset to `itemsAttributes` in the model. It actually turned out to be as simple as overriding `execute` function on the changeset:
+So the last remaining piece was to propagate changes on `items` in the `changeset` to `itemsAttributes` on the model. It actually turned out to be as simple as overriding `execute` function on the changeset:
 
 ```javascript
 Changeset.reopen({
@@ -79,9 +84,9 @@ Changeset.reopen({
 });
 ```
 
-Now when I call `changeset.save()`, changes in the `Items` are correctly propagated to the `model#itemsItributes` and then via computed property to the `model.items`.
+Now when I called `changeset.save()`, changes in the `Items` were correctly propagated to the `model.itemsItributes` and then via computed property to the `model.items`.
 
-Here is the full code for custom changeset:
+Here is the full code for my custom changeset:
 
 ```javascript
 let Changeset = changeset(this.invoice,

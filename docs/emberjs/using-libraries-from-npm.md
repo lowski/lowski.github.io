@@ -9,45 +9,50 @@ parent: Ember.js
 
 UPDATE: All those manual steps can be replaced with [ember-auto-import](https://github.com/ef4/ember-auto-import).
 
-Using NPM packages with ember without ember-cli wrappers is a little bit cumbersome but doable.
+Using NPM packages with ember without ember-cli wrappers is actually possible but it requires 2 broccoli plugins:
 
-Before start you will need 2 extra broccoli plugins (`broccoli-funnel` for moving arbitrary files and directories and `broccoli-merge-trees`):
+- `broccoli-funnel` for moving arbitrary files and directories
+- `broccoli-merge-trees` - for merging trees
 
-```bash
-npm install -D broccoli-funnel broccoli-merge-trees
-```
+Here is quick cheatsheet how to make it work:
 
-1. Generate vendor shim which will be responsible by exporting the library as ES6 module:
+1. Install dependencies:
 
-   ```bash
-    ember generate vendor-shim library-name
-   ```
+    ```bash
+    npm install -D broccoli-funnel broccoli-merge-trees
+    ```
 
-2. You should have shim code generated similar to the one below:
+2. Generate vendor shim which will be responsible by exporting the library as ES6 module:
 
-   ```javascript
-    // vendor/shims/library-name.js
-    (function() {
-      function vendorModule() {
-        'use strict';
-   
-        return {
-          'default': self['library-name'],
-          __esModule: true,
-        };
-      }
-   
-      define('library-name', [], vendorModule);
-    })();
-   ```
+    ```bash
+     ember generate vendor-shim library-name
+    ```
 
-3. Generate in-repo addon where you will include your shims in the import paths:
+3. It should generate shim code similar to the one below:
+
+    ```javascript
+     // vendor/shims/library-name.js
+     (function() {
+       function vendorModule() {
+         'use strict';
+
+         return {
+           'default': self['library-name'],
+           __esModule: true,
+         };
+       }
+
+       define('library-name', [], vendorModule);
+     })();
+    ```
+
+4. Generate in-repo addon where you will include your shims in the import paths:
 
    ```bash
     ember generate in-repo-addon libary-name
    ```
 
-4. Now you are ready to include library and vendor shims in the import paths:
+5. Include library and vendor shims in the import paths:
 
    ```javascript
     // lib/library-name/index.js

@@ -7,11 +7,11 @@ parent: PostgreSQL
 
 # Multiple versions on MacOS
 
-You can run multiple versions of PostgreSQL using excellent [Postgres.app](https://postgresapp.com). It's very good solution as long as you don't need older Postgres versions (Postgres.app allows to run up to 4 last major versions).
+It's possible to run multiple versions of PostgreSQL using excellent [Postgres.app](https://postgresapp.com). It's very good solution as long as you don't need older Postgres versions (`Postgres.app` allows to run up to 4 last major versions).
 
 This is an alternative solution which allows to run older versions and easily switch between them.
 
-First you need to tap a new Homebrew repo:
+Start with tapping `petere`'s `Homebrew` repo:
 
 ```
 brew tap petere/postgresql
@@ -24,11 +24,11 @@ brew install postgresql-9.3
 brew install postgresql-9.6
 ```
 
-I also recommend to install `postgresql-common` which provides special wrapper scripts for running managing the clusters.
+I recommend to install `postgresql-common` which provides special wrapper scripts for running managing the clusters.
 
 ## Usage
 
-Before you can start using installed version you need to create a cluster:
+Before starting the database, you need to create a cluster:
 
 ```
 pg_createcluster 9.6 main

@@ -9,13 +9,13 @@ parent: Git
 
 Today I wanted to revert `HEAD` of the branch which was rebased with some other branch.
 
-It turned out that if you use any `HEAD` changing operations like `commit`, `merge`, `rebase`, `reset`, etc. git saves starting point to `ORIG_HEAD`. Assuming you didn't perform any other operation after that faulty rebase, you can revert your change with:
+It turned out that if you use any `HEAD` changing operations like `commit`, `merge`, `rebase`, `reset`, etc. git saves starting point to `ORIG_HEAD`. Assuming no other operation was performed after the faulty rebase, you can revert the change with:
 
 ```
 git reset ORIG_HEAD --hard
 ```
 
-If your `HEAD` has been modified since then, you will have to use `reflog`.
+If `HEAD` pointer has been modified, you will need to use `reflog`.
 
 ## Reflog
 

@@ -7,13 +7,13 @@ parent: Go
 
 # Run gofmt on all project files
 
-If you'd like to run go formatter recursively on all project's files simply use:
+To run go formatter recursively on all project's files simply use:
 
 ```
 gofmt -s -w .
 ```
 
-If you'd like also to print the files that has been changed add `-l` option:
+To print the files that has been changed add `-l` option:
 
 ```
 gofmt -l -s -w .
