@@ -7,7 +7,7 @@ parent: Ember.js
 
 # Attaching custom behavior to changeset
 
-Recently I've encountered a very interesting case: I wanted to re-use computed properties from the model on the [changeset](https://github.com/poteto/ember-changeset) so when user assigned new values, derived values were immediately updated. Computed properties had to be also attached changeset (even though they were already on the model) because changes are not propagated to the model until they are valid during `changeset.execute()`call (which is used under the hood by `changeset.save()`).
+Recently I've encountered a very interesting case: I wanted to re-use model's computed properties on the [changeset](https://github.com/poteto/ember-changeset) so when new values were assigned, derived values were immediately updated. Computed properties had to be attached to the changeset (even though they were already defined on the model) because changes are not propagated to the model until they are valid during `changeset.execute()`call (which is used under the hood by `changeset.save()`).
 
 Here is short code sample presenting how it was supposed to work:
 
