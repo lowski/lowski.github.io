@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Using libraries from NPM
+title: Using libraries from NPM Ember
 date: 2017-12-10
 parent: Ember.js
 ---
 
-# Using libraries from NPM
+# Using libraries from NPM with Ember
 
 UPDATE: All those manual steps can be replaced with [ember-auto-import](https://github.com/ef4/ember-auto-import).
 

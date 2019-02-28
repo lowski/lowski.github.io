@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Undoing a rebase
+title: Undoing a Git rebase
 date: 2019-02-15
 parent: Git
 ---
 
-# Undoing a rebase
+# Undoing a Git rebase
 
 Today I wanted to revert `HEAD` of the branch which was rebased with some other branch.
 
