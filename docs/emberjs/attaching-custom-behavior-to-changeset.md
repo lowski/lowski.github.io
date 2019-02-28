@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Attaching custom behavior to Ember changeset
+title: Attaching custom behavior to Ember changesets
 date: 2019-02-22
 parent: Ember.js
 ---
 
-# Attaching custom behavior to Ember changeset
+# Attaching custom behavior to Ember changesets
 
 Recently I've encountered a very interesting case: I wanted to re-use a model's computed properties on the [changeset](https://github.com/poteto/ember-changeset) so when new values were assigned, derived values were immediately updated.
 
@@ -105,3 +105,4 @@ Changeset.reopen({
 return Changeset.create();
 ```
 
+*Credits to [jwwweber](https://twitter.com/jwwweber) for checking spelling errors and overall content of the article.*

@@ -10,7 +10,7 @@ layout: home
   {% for node in pages_list %}
     {% if node.parent %}
       <li>
-        <a href="{{ node.url | absolute_url }}">{{ node.parent }}: {{ node.title }} - {{ node.date }}</a>
+        <a href="{{ node.url | absolute_url }}">{{ node.title }} - {{ node.date }}</a>
       </li>
     {% endif %}
   {% endfor %}

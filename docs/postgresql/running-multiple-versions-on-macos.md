@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Multiple PostgreSQL versions on MacOS
+title: Running multiple PostgreSQL versions on MacOS
 date: 2018-12-04
 parent: PostgreSQL
 ---
 
-# Multiple PostgreSQL versions on MacOS
+# Running multiple PostgreSQL versions on MacOS
 
 It's possible to run multiple versions of PostgreSQL using excellent [Postgres.app](https://postgresapp.com). It's very good solution as long as you don't need older Postgres versions (`Postgres.app` allows to run up to 4 last major versions).
 
