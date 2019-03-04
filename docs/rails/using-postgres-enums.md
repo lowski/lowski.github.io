@@ -2,7 +2,7 @@
 layout: default
 title: Using PostgreSQL enums with Ruby on Rails
 date: 2018-12-24
-parent: Rails
+parent: Ruby on Rails
 ---
 
 # Using PostgreSQL enums with Ruby on Rails
