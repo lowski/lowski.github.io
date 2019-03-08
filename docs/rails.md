@@ -7,3 +7,4 @@ permalink: /docs/rails
 ---
 
 # Ruby on Rails
+
