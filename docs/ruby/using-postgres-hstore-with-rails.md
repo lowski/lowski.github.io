@@ -2,7 +2,7 @@
 layout: default
 title: Using PostgreSQL hstore with Ruby on Rails
 date: 2018-12-20
-parent: Ruby on Rails
+parent: Ruby
 
 ---
 

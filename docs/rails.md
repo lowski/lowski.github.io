@@ -1,10 +1,10 @@
 ---
 layout: default
 nav_order: 4
-title: Ruby on Rails
+title: Ruby
 has_children: true
-permalink: /docs/rails
+permalink: /docs/
 ---
 
-# Ruby on Rails
+# Ruby
 
