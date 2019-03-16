@@ -1,7 +1,7 @@
 ---
 layout: homepage
 nav_order: 1
-title: 🏠 Home
+title: Home
 description: ""
 permalink: /
 ---
