@@ -8,4 +8,3 @@ permalink: /docs/react
 ---
 
 # React
-
