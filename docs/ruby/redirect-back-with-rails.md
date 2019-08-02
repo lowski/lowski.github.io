@@ -5,7 +5,7 @@ date: 2019-08-02
 parent: Ruby
 ---
 
-## Redirect back with Rails
+# Redirect back with Rails
 
 Rails has built-in mechanism for redirecting user to the page that issued the request. It simply relies on `HTTP_REFERER` header.
 

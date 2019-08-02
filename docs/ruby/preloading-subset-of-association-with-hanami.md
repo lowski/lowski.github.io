@@ -5,7 +5,7 @@ date: 2019-03-12
 parent: Ruby
 ---
 
-## Preloading subset of association with Hanami
+# Preloading subset of association with Hanami
 
 Preloading associated records is not always obvious - especially when only specific items should be loaded, i.e. `blog`  with `posts` published within given range. As Hanami's repositories are Ruby classes there a lot of possibilities - here is one of them:
 
