@@ -5,13 +5,11 @@ layout: home
 {{content}}
 
 <h2 class="text-delta">Latest posts</h2>
-<ul>
+<p class="posts-list">
   {% assign pages_list = site.html_pages | sort:"date" | reverse %}
   {% for node in pages_list %}
     {% if node.parent %}
-      <li>
-        <a href="{{ node.url | absolute_url }}">{{ node.title }} - {{ node.date }}</a>
-      </li>
+      <a href="{{ node.url | absolute_url }}">{{ node.date }} - {{ node.title }}</a><br />
     {% endif %}
   {% endfor %}
-</ul>
+</p>

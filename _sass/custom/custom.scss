@@ -6,8 +6,13 @@
   border-radius: 3px;
 }
 
+.posts-list {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .site-title {
-  padding-right: 0;
+  padding-right: 0 !important;
 }
 
 .turbolinks-progress-bar {
