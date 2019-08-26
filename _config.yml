@@ -3,7 +3,7 @@ description: Software engineer focused on building web applications.
 url: "https://www.mendelowski.com"
 permalink: pretty
 
-remote_theme: pmarsceill/just-the-docs
+remote_theme: pmarsceill/just-the-docs@v0.2.5
 search_enabled: true
 aux_links:
   GitHub: https://github.com/lowski
