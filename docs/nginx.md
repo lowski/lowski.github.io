@@ -1,7 +1,7 @@
 ---
 layout: default
 nav_order: 4
-title: nginx
+title: Nginx
 has_children: true
 permalink: /docs/nginx
 ---
