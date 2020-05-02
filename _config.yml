@@ -2,6 +2,7 @@ title: Lucas Mendelowski
 description: Software engineer focused on building web applications.
 url: "https://www.mendelowski.com"
 permalink: pretty
+ga_tracking: UA-165298934-1
 
 remote_theme: pmarsceill/just-the-docs@v0.2.5
 search_enabled: true
