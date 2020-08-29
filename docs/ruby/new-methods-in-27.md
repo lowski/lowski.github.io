@@ -1,11 +1,11 @@
 ---
 layout: default
-title: New methods in Ruby 2.7
+title: New methods introduced in Ruby 2.7
 date: 2020-08-16
 parent: Ruby
 ---
 
-# New methods in Ruby 2.7
+# New methods introduced in Ruby 2.7
 
 Ruby 2.7 introduced some helpful methods:
 
