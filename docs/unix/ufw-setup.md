@@ -7,7 +7,7 @@ parent: Unix
 
 # UFW setup
 
-[UncomplicatedFirewall](https://wiki.ubuntu.com/UncomplicatedFirewall) is an interface to iptables to simplify the process of configuring a firewall on Linux systems.
+[UncomplicatedFirewall](https://wiki.ubuntu.com/UncomplicatedFirewall){:target="_blank"} is an interface to iptables to simplify the process of configuring a firewall on Linux systems.
 
 ## Quick start
 
