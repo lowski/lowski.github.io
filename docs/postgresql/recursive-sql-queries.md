@@ -61,7 +61,7 @@ WITH RECURSIVE subfolders AS (
 | 8  | baltic sea      | vacations |
 | 9  | tatra mountains | vacations |
 
-In the first invocation, the query finds all root folders. In its second iteration, it uses these root folders as input values, to find their sub-folders. In the 3rd invocation, root folders' directories are used to find `user` folders (`documents`, `pictures`, and `downloads`). It continues with iterations until there are no more directories with folders (`baltic sea` and `tatra mountains` vacations is the last one).
+In the first invocation, the query finds all top-level folders. In its second iteration, it uses these root folders as input values, to find their sub-folders (`user`). In the 3rd invocation, `user` directories (`documents`, `pictures`, and `downloads`) are found. The process continues with its iterations until there are no more directories containing folders (`baltic sea` and `tatra mountains` are the last ones).
 
 `WITH` statement can also be used to find a path of a specific folder:
 

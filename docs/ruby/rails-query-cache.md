@@ -29,7 +29,7 @@ pry(main)> User.count
 => 2
 ```
 
-After enabling the query cache explicitly it will access database only once:
+After enabling the query cache explicitly, database will be accessed once:
 
 ```
 pry(main)> ActiveRecord::Base.connection.enable_query_cache!
@@ -42,7 +42,7 @@ pry(main)> User.count
 => 2
 ```
 
-Rails automatically enables query cache on a request basis, so running the same query inside a single controller action results in using cache:
+Rails automatically enables query cache on a request basis, so calling the same query inside a controller action will use the cached result from a previous call:
 
 ```ruby
 class UsersController < ApplicationController
