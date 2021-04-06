@@ -48,3 +48,21 @@ or in multi database setup:
 ```
 rake db:migrate:up:primary VERSION=20100905201547
 ```
+
+**Rerun specific migrations**
+
+```
+rake db:migrate:redo VERSION=20100905201547
+```
+
+or in multi database setup:
+
+```
+rake db:migrate:redo:primary VERSION=20100905201547
+```
+
+**Rerun `n` migrations**
+
+```
+rake db:migrate:redo STEP={n}
+```
