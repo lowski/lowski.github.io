@@ -7,7 +7,7 @@ parent: Ruby
 
 # Overriding model name in Rails
 
-Rails automatically generates url paths for `redirect_to`, `form_for` methods based on the provided object (via [ActionDispatch::Routing::UrlFor#url_for](https://api.rubyonrails.org/v3.2.14/classes/ActionDispatch/Routing/UrlFor.html#method-i-url_for){:target="_blank"}). Sometimes there are situations when you don't want that - i.e. object is namespaced or extended.
+Rails automatically generates URLs for `redirect_to`, `form_for` methods based on the provided object (via [ActionDispatch::Routing::UrlFor#url_for](https://api.rubyonrails.org/v3.2.14/classes/ActionDispatch/Routing/UrlFor.html#method-i-url_for){:target="_blank"}). Sometimes, there are situations when we want to customize that (i.e. object is namespaced).
 
 Let's look at simple `Identity::Session` object:
 
@@ -19,17 +19,16 @@ module Identity
 end
 ```
 
-Passing `Identity::Session` instance to `form_for` helper will call `session_identities_path` to get a path for `action` attribute.
+Passing `Identity::Session` instance to `form_for` helper will use `session_identities_path` method as an `action` attribute.
 
-This can be changed by overriding `Identity::Session.model_name` method with a little help from [ActiveModel::Name](https://api.rubyonrails.org/classes/ActiveModel/Name.html){:target="_blank"}.
+This can be changed by overriding `Identity::Session.model_name` method with some help from [ActiveModel::Name](https://api.rubyonrails.org/classes/ActiveModel/Name.html){:target="_blank"}.
 
-`ActiveModel::Name` can automatically detect `namespace` and `name` based on the provided `klass` for us:
+`ActiveModel::Name` can automatically detect `namespace` and `name` based on the provided `klass`:
 
 ```
 naming = ActiveModel::Name.new(Identity::Session)
 naming.name
 #> "Identity::Session"
-
 naming.route_key
 #> "session_identities"
 ```
@@ -40,12 +39,21 @@ It also accepts `klass`, `namespace` and `name` as separate arguments to overrid
 naming = ActiveModel::Name.new(Identity::Session, nil, "Session")
 naming.name
 #> "Session"
-
 naming.route_key
 #> "sessions"
 ```
 
-Now we need to override `Identity::Session.model_name` method:
+They can be even used to change the namespace:
+
+```
+naming = ActiveModel::Name.new(Identity::Session, Identity, "Logins::Session")
+naming.name
+#> "Logins::Sessions" 
+naming.route_key
+#> "logins_sessions"
+```
+
+Now we just need to use it to override `Identity::Session.model_name` method, according to our needs:
 
 ```ruby
 module Identity
@@ -57,9 +65,9 @@ module Identity
 end
 ```
 
-After that `Identity::Session` instance can be safely passed to `form_for` or `redirect_to` methods.
+After that, `Identity::Session` instance can be passed to `form_for` or `redirect_to` methods.
 
-Correct behavior can be verified with `ActionDispatch::Routing::UrlFor#url_for` method:
+URLs can be verified with `ActionDispatch::Routing::UrlFor#url_for` method in the `rails console`:
 
 ```ruby
 include ActionDispatch::Routing::UrlFor
